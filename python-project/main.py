@@ -8,5 +8,6 @@ W = "wit"
 Z = "zwart"
 geheime_code = random.choices([R, G, B, P, W, Z], k=4)
 print(geheime_code)
-
-print("hallo")
+poging = 0
+while poging < 10:
+    print("Poging", poging + 1)
