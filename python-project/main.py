@@ -24,5 +24,5 @@ while poging < 10:
     elif  gok != geheime_code:
       print("Helaas, dat is niet correct. Probeer het opnieuw.")
 
-    else gok != geheime_code:
-    print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)  
+else:
+    print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)
