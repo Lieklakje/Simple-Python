@@ -14,11 +14,12 @@ print(geheime_code)
 poging = 0
 while poging < 10:
     gok = input("Geef een code van 4 kleuren in: ").upper().split()
-     poging += 1
-     print("Poging", poging)
+    poging += 1
+    print("Poging", poging)
 
     if gok == geheime_code:
-       print("Gefeliciteerd, je hebt het goed!")
+        print("Gefeliciteerd, je hebt het goed!")
+        break
 
-    elif  gok != geheime_code:
-      print("Helaas, dat is niet correct. Probeer het opnieuw.")
+    elif gok != geheime_code:
+        print("Helaas, dat is niet correct. Probeer het opnieuw.")
