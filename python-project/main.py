@@ -8,21 +8,24 @@ P = "paars"
 W = "wit"
 Z = "zwart"
 
+kleuren = {"R": R, "G": G, "B": B, "P": P, "W": W, "Z": Z}
+
 geheime_code = random.choices([R, G, B, P, W, Z], k=4)
 print(geheime_code)
 
 poging = 0
 while poging < 10:
     gok = input("Geef een code van 4 kleuren in: ").upper().split()
+    gok_kleuren = [kleuren[k] for k in gok]
     poging += 1
     print("Poging", poging)
 
-    if gok == geheime_code:
-       print("Gefeliciteerd, je hebt het goed!")
-       break
+    if gok_kleuren == geheime_code:
+        print("Gefeliciteerd, je hebt het goed!")
+        break
 
-    elif  gok != geheime_code:
-      print("Helaas, dat is niet correct. Probeer het opnieuw.")
+    elif gok_kleuren != geheime_code:
+        print("Helaas, dat is niet correct. Probeer het opnieuw.")
 
 else:
     print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)  
