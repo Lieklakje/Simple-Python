@@ -18,10 +18,11 @@ while poging < 10:
     print("Poging", poging)
 
     if gok == geheime_code:
-       print("Gefeliciteerd, je hebt het goed!")
+        print("Gefeliciteerd, je hebt het goed!")
+        break
 
-    elif  gok != geheime_code:
-      print("Helaas, dat is niet correct. Probeer het opnieuw.")
+    elif gok != geheime_code:
+        print("Helaas, dat is niet correct. Probeer het opnieuw.")
 
-while poging == 10:
-   print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)  
+else:
+    print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)
