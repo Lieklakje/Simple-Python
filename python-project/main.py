@@ -13,7 +13,7 @@ print(geheime_code)
 
 poging = 0
 while poging < 10:
-    gok = input("Geef een code van 4 kleuren in: ").upper().split
+    gok = input("Geef een code van 4 kleuren in: ").upper().split()
     print("Poging", poging + 1)
 
     if gok == geheime_code:
