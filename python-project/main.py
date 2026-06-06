@@ -19,6 +19,8 @@ while poging < 10:
     gok_kleuren = [kleuren[k] for k in gok]
     poging += 1
     print("Poging", poging)
+    print("Je gok:", gok_kleuren)  
+    print("Geheime code:", geheime_code)  
 
     if gok_kleuren == geheime_code:
         print("Gefeliciteerd, je hebt het goed!")
