@@ -9,3 +9,4 @@ Z = "zwart"
 geheime_code = random.choices([R, G, B, P, W, Z], k=4)
 print(geheime_code)
 
+print("hallo")
