@@ -25,4 +25,4 @@ while poging < 10:
       print("Helaas, dat is niet correct. Probeer het opnieuw.")
 
 else:
-    print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)
+    print("Helaas, je hebt alle pogingen opgebruikt. De geheime code was:", geheime_code)  
