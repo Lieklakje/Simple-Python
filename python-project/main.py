@@ -1,5 +1,5 @@
 import random
-print("Welkom bij het spel Mastermind. De computer genereert een code van 4 kleuren. De kleuren zijn: Rood (R), Groen (G), Blauw (B), Paars (P), Wit (W), Zwart (Z). Vul de input in als x x x x of X X X X, waarbij x de eerste letter van de kleur is. Je hebt 10 pogingen om de correcte code te raden. Succes!")
+print("Welkom bij het spel Mastermind. De computer genereert een code van 6 kleuren: Rood (R), Groen (G), Blauw (B), Paars (P), Wit (W), Zwart (Z). Vul de input in als x x x x of X X X X, waarbij x de eerste letter van de kleur is. Je hebt 10 pogingen om de correcte code te raden. Succes!")
 
 R = "rood"
 G = "groen"
@@ -11,7 +11,7 @@ Z = "zwart"
 kleuren = {"R": R, "G": G, "B": B, "P": P, "W": W, "Z": Z}
 
 geheime_code = random.choices([R, G, B, P, W, Z], k=4)
-print(geheime_code)
+#print(geheime_code)
 
 poging = 0
 while poging < 10:
@@ -20,7 +20,7 @@ while poging < 10:
     poging += 1
     print("Poging", poging)
     print("Je gok:", gok_kleuren)  
-    print("Geheime code:", geheime_code)  
+    #print("Geheime code:", geheime_code)  
 
     if gok_kleuren == geheime_code:
         print("Gefeliciteerd, je hebt het goed!")
