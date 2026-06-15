@@ -1,85 +1,100 @@
 import random
 
-opnieuw = "ja"
-while opnieuw == "ja":
-    print("Welkom bij het spel Mastermind. De computer genereert een code van 6 kleuren: Rood (R), Groen (G), Blauw (B), Paars (P), Wit (W), Zwart (Z). Vul de input in als x x x x of X X X X, waarbij x de eerste letter van de kleur is. Je hebt 10 pogingen om de correcte code te raden. Succes!")
-    print("")
-    print("")
+R = "rood"
+G = "groen"
+B = "blauw"
+P = "paars"
+W = "wit"
+Z = "zwart"
+
+kleuren = {"R": R, "G": G, "B": B, "P": P, "W": W, "Z": Z}
+
+
+def geef_feedback(gok_kleuren, geheime_code):
+    goedePlaats = 0
+    verkeerdePlaats = 0
     
-    R = "rood"
-    G = "groen"
-    B = "blauw"
-    P = "paars"
-    W = "wit"
-    Z = "zwart"
+    over_geheim = []
+    over_gok = []
     
-    kleuren = {"R": R, "G": G, "B": B, "P": P, "W": W, "Z": Z}
+    # Eerst de Z's tellen
+    for i in range(4):
+        if gok_kleuren[i] == geheime_code[i]:
+            goedePlaats += 1
+        else:
+            over_geheim.append(geheime_code[i])
+            over_gok.append(gok_kleuren[i])
     
-    #"""
-    def geef_feedback(gok_kleuren, geheime_code):
-        goedePlaats = 0
-        verkeerdePlaats = 0
-    
-        over_geheim = []
-        over_gok = []
-    
-        # Eerst de Z's tellen
-        for i in range(4):
-            if gok_kleuren[i] == geheime_code[i]:
-                goedePlaats += 1
-            else:
-                over_geheim.append(geheime_code[i])
-                over_gok.append(gok_kleuren[i])
-    
-        # Daarna de W's tellen
-        for kleur in over_gok:
-            if kleur in over_geheim:
-                verkeerdePlaats += 1
-                over_geheim.remove(kleur)
-        return "Z" * goedePlaats + "W" * verkeerdePlaats
-    #"""
-    
-    geheime_code = random.choices([R, G, B, P, W, Z], k=4)
-    
-    #print(geheime_code)
-    
-    poging = 0
-    while poging < 10:
-        poging += 1
-        print("Poging", poging)
-        gok = input("Voer een code van 4 kleuren in: ").upper().split()
-        while len(gok) !=4 or not all(k in kleuren for k in gok):
-            #'all' hebben we met behulp van AI leren gebruiken
+    # Daarna de W's tellen
+    for kleur in over_gok:
+        if kleur in over_geheim:
+            verkeerdePlaats += 1
+            over_geheim.remove(kleur)
+
+    return "Z" * goedePlaats + "W" * verkeerdePlaats
+
+
+def geef_begin_tekst():
+    print("Welkom bij het spel Mastermind.")
+    print("De computer genereert een code van 6 kleuren: Rood (R), Groen (G), Blauw (B), Paars (P), Wit (W), Zwart (Z).")
+    print("Vul de input in als XXXX, waarbij X de eerste letter van de kleur is.")
+    print("Je hebt 10 pogingen om de correcte code te raden.")
+    print("In de feedback betekent een Z: aantal op de goede plaats. En W: aantal in de geheime code, maar op de verkeerde plaats")
+    print("Succes!")
+
+def doe_een_gok():
+    # Doe een gok
+    # Als de invoer goed is, doe dan break uit de loop of ga door
+    # Maak je een fout, doe dan continue
+    while True:
+        gok = input("Voer een code van 4 kleuren in XXXX: ").upper()
+        # De all() test is met behulp van AI
+        if len(gok) != 4 or not all(k in kleuren for k in gok):
             print("Foute invoer, probeer het opnieuw.")
             print("")
-            #poging += 1
-            #print("Poging", poging)
-            gok = input("Voer een code van 4 kleuren in: ").upper().split()
+            continue
+
+        # dikke prima blijkbaar
+        #print(gok)
+        break
+
+    # Maak van 4 letters een lijstje van 4 letters. Handig voor straks
+    return list(gok)
+
+# 1 spel
+def start_een_spel():
+    geef_begin_tekst()
+    geheime_code = random.choices(["R", "G", "B", "P", "W", "Z"], k=4)
+    # print(geheime_code)
+
+    print("")
+
+    pogingen = 0
+    while pogingen < 10:
+        pogingen += 1
+        print("")
+        print("Poging", pogingen)
+        gok = doe_een_gok()
+
+        if gok == geheime_code:
+            print("Gefeliciteerd! Dat was de code. Je hebt gewonnen.")
+            return
+
+        feedback = geef_feedback(gok, geheime_code)
+        print("Een Z betekent op zijn plek, een W betekent niet op zijn plek: " + feedback)
+
+    print("")
+    # de join gevonden op het internet, zodat de lijst met letters weer 1 string wordt
+    print("Jammer! Je hebt verloren. De geheime code is: " + "".join(geheime_code))
+    return
+
+
+# Spelletjes
+opnieuw = "ja"
+while opnieuw == "ja":
+    start_een_spel()
+    print("")
+    opnieuw = input("Wil je nog opnieuw spelen? (ja/nee) ")
+
     
-    
-        
-        gok_kleuren = [kleuren[k] for k in gok]
-        print("Je gok:", gok_kleuren)
-        #print("Geheime code:", geheime_code)  
-    
-    
-    
-        if gok_kleuren == geheime_code:
-            print("Gefeliciteerd, je hebt het goed!")
-            break
-    
-    
-        elif gok_kleuren != geheime_code and poging != 10:
-            feedback = geef_feedback(gok_kleuren, geheime_code)
-            if feedback == "":
-                feedback = "Niks is correct"
-            print(feedback + " - Probeer het opnieuw.")
-            print("")
-    
-        else:
-         print("")
-         print("Helaas, je hebt alle pogingen opgebruikt.")
-         print("De geheime code was:", geheime_code)
-            
-    print("Wil je nog een keer spelen? (ja/nee)")
-    input
+
