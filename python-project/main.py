@@ -54,11 +54,11 @@ def doe_een_gok():
             print("")
             continue
 
-        # dikke prima blijkbaar
+        # werkt goed blijkbaar
         #print(gok)
         break
 
-    # Maak van 4 letters een lijstje van 4 letters. Handig voor straks
+    # Maakt van 4 letters een lijstje van 4 letters. Handig voor straks
     return list(gok)
 
 # 1 spel
