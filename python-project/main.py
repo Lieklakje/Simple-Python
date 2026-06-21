@@ -13,9 +13,10 @@ kleuren = {"R": R, "G": G, "B": B, "P": P, "W": W, "Z": Z}
 record = 0
 # Deze variabel is alleen nodig voor aan het einde van de rondes en het spel
 verlies = False
-
-
 # Deze variabel is nodig zodat er niks fout gaat bij poging 10 (winst of verlies)
+
+
+
 def geef_feedback(gok_kleuren, geheime_code, gok):
     goedePlaats = 0
     verkeerdePlaats = 0
